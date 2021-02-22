@@ -26,4 +26,20 @@ RSpec.describe 'Mechanics show' do
       expect(actual_rides).to eq([@plane_ride.name, @boat_ride.name])
     end
   end
+
+  it 'shows a form to add a ride id to mechanic workload' do
+    new_ride = Ride.create!(name: 'Super Fun Time', thrill_rating: 99, open: true)
+    visit "/mechanics/#{@maryam.id}"
+
+    within('#add-assignment') do
+      fill_in(:ride_id, with: new_ride.id)
+      click_on('Submit')
+    end
+
+    expect(current_path).to eq("/mechanics/#{@maryam.id}")
+
+    within('#ride-assignments') do
+      expect(page).to have_content('Super Fun Time')
+    end
+  end
 end
