@@ -1,0 +1,15 @@
+<h1>Mechanic Information</h1>
+
+<section id='info'>
+  <h3><%= @mechanic.name %></h3>
+  <ul>
+    <li>Years of Experience: <%= @mechanic.years_of_experience %></li>
+    <li id='ride-assignments'>Open Rides Currently Working On:
+      <ol>
+        <% @mechanic.open_rides.each do |ride| %>
+          <li class='ride'><%= ride.name %></li>
+        <% end %>
+      </ol>
+    </li>
+  </ul>
+</section>
