@@ -17,4 +17,13 @@ RSpec.describe 'Amusement Parks show' do
       expect(page).to have_content('50.00')
     end
   end
+
+  it 'shows sorted (alphabetically) list of rides in the park' do
+    visit "/amusement_parks/#{@park.id}"
+
+    within('#rides') do
+      actual_rides = page.all('.ride').map(&:text)
+      expect(actual_rides).to eq([@boat_ride.name, @car_ride.name, @plane_ride.name])
+    end
+  end
 end

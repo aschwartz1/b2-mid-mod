@@ -4,5 +4,12 @@
   <h3><%= @park.name %></h3>
   <ul>
     <li>Admission Price: <%= number_with_precision(@park.admission_price, precision: 2) %></li>
+    <li id='rides'>Rides:
+      <ol>
+        <% @park.rides_alpha_sort.each do |ride| %>
+          <li class='ride'><%= ride.name %></li>
+        <% end %>
+      </ol>
+    </li>
   </ul>
 </section>
