@@ -15,5 +15,15 @@ RSpec.describe AmusementPark, type: :model do
 
       expect(park.rides_alpha_sort).to eq([boat_ride, car_ride, plane_ride])
     end
+
+    it '#average_thrill_rating' do
+      park = AmusementPark.create!(name: 'Very Fun Park', admission_price: 50.00)
+      boat_ride = Ride.create!(name: 'Boats', thrill_rating: 1, open: true)
+      plane_ride = Ride.create!(name: 'Planes', thrill_rating: 9, open: true)
+      car_ride = Ride.create!(name: 'Cars', thrill_rating: 5, open: false)
+      park.rides << [boat_ride, plane_ride, car_ride]
+
+      expect(park.average_thrill_rating).to eq(5)
+    end
   end
 end

@@ -26,4 +26,12 @@ RSpec.describe 'Amusement Parks show' do
       expect(actual_rides).to eq([@boat_ride.name, @car_ride.name, @plane_ride.name])
     end
   end
+
+  it "shows average thrill rating for the park's rides" do
+    visit "/amusement_parks/#{@park.id}"
+
+    within('#average-thrill') do
+      expect(page).to have_content('5')
+    end
+  end
 end
