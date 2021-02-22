@@ -1,0 +1,8 @@
+<h1>Mechanic Information</h1>
+
+<section id='info'>
+  <h3><%= @park.name %></h3>
+  <ul>
+    <li>Admission Price: <%= number_with_precision(@park.admission_price, precision: 2) %></li>
+  </ul>
+</section>
